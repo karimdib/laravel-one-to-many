@@ -1,0 +1,30 @@
+<?php
+
+namespace Database\Seeders;
+
+use Faker\Generator as Faker;
+use App\Models\Project;
+use App\Models\Type;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class ProjectSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     */
+    public function run(Faker $faker): void
+    {
+        $types = Type::all();
+        $ids = $types->pluck('id');
+
+        for ($i = 0; $i < 50; $i++) {
+            $new_project = new Project();
+            $new_project->name = $faker->colorName();
+            $new_project->description = $faker->text();
+            $new_project->types_id = $faker->optional()->randomElement($ids);
+
+            $new_project->save();
+        }
+    }
+}
