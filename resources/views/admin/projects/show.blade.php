@@ -5,7 +5,7 @@
         <div class="col-4">
             <p>{{$project->name}}</p>
             <p>{{$project->description}}</p>
-            @dd($project->types)
+            <p>{{isset($project->type) ? $project->type->name : '-' }}</p>
         </div>
     </div>
 </div>

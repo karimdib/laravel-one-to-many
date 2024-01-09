@@ -7,7 +7,7 @@
             <a href="{{route('admin.projects.show', $project)}}">
                 <p>{{$project['name']}}</p>
                 <p>{{$project['description']}}</p>
-                <p>{{isset($project->types_id) ? $project->types_id : '-' }}</p>
+                <p>{{isset($project->type) ? $project->type->name : '-' }}</p>
             </a>
             <a href="{{route('admin.projects.edit', $project)}}">Edit</a>
             <form class="" action="{{route('admin.projects.destroy', $project['id'])}}" method="POST">
