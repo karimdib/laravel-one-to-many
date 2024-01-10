@@ -33,6 +33,9 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $request->validate([
+            'type_id' => 'exist',
+        ]);
         $project = Project::create($data);
         return redirect()->route('admin.projects.show', $project);
     }
